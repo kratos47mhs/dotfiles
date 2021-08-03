@@ -1,0 +1,291 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="powerlevel10k/powerlevel10k"
+#ZSH_THEME="spaceship"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
+# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+HIST_STAMPS="mm/dd/yyyy"
+DISABLE_LS_COLORS="true"
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git
+     zsh-autosuggestions
+     zsh-completions
+     zsh-history-substring-search
+     zsh-syntax-highlighting
+     last-working-dir
+     tmux
+     colorize
+     copyfile
+     docker
+     docker-compose
+     microk8s
+     jhipster)
+
+source $ZSH/oh-my-zsh.sh
+autoload -U compinit && compinit
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Example aliases
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+#alias mirrorUpdate='sudo reflector --latest 250 --protocol https --sort rate --save /etc/pacman.d/mirrorlist'
+#alias pacmanGhost='~/.scripts/pacman.sh'
+#alias shivita='toilet -f mono12 -F rainbow 'andrea' | ponythink -f winona'
+alias ls='ls --color=auto'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+alias ip='ip -c'
+alias rm='rm -i'
+#alias x='ranger'
+#alias c='cmus'
+alias h='htop'
+alias mkctl="microk8s.kubectl"
+alias aptu="sudo apt update && sudo apt upgrade -y"
+
+# custom aliases
+alias c="code .";
+alias ll="ls -1a";
+alias ..="cd ../";
+alias ..l="cd ../ && ll";
+alias pg="echo 'Pinging Google' && ping www.google.com";
+alias npm-update="npx npm-check -u";
+alias flushdns="sudo systemd-resolve --flush-caches";
+
+## git aliases
+alias gc="git checkout ";
+alias gcm="git checkout master";
+alias gs="git status";
+alias gpull="git pull";
+alias gf="git fetch";
+alias gfa="git fetch --all";
+alias gf="git fetch origin";
+alias gpush="git push";
+alias gpushf="git push -f";
+alias gd="git diff";
+alias ga="git add .";
+alias glog="git log";
+alias gb="git branch";
+alias gbr="git branch remote"
+alias gfr="git remote update"
+alias gbn="git checkout -B "
+alias grf="git reflog";
+alias grh="git reset HEAD~" # last commit
+alias gac="git add . && git commit -a -m "
+alias gsu="git gpush --set-upstream origin "
+alias glog="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches"
+
+## npm aliases
+alias ni="npm install";
+alias nrs="npm run start -s --";
+alias nrb="npm run build -s --";
+alias nrd="npm run dev -s --";
+alias nrt="npm run test -s --";
+alias nrtw="npm run test:watch -s --";
+alias nrv="npm run validate -s --";
+alias rnm="rm -rf node_modules";
+
+## yarn aliases
+alias yai="yarn install"; # lists all the scripts we have available
+alias yab="yarn build"; # build dist directory for each package
+alias yal="yarn lint:fix"; # format source and auto-fix eslint issues
+alias yac="yarn commit"; # open a Q&A prompt to help construct valid commit messages
+alias yas="yarn start";
+alias yasb="yarn storybook:start"; # start storybook
+alias yat="yarn test"; # run the unit tests*
+alias yatw="yarn test:watch"; #run the unit tests for files changed on save
+alias flush-nm="rm -rf node_modules && yarn install && echo Yarn install is done";
+
+## docker
+alias dockerstop='docker-compose stop';
+alias dockerrestart='docker-compose restart';
+alias dockerup='docker-compose up -d';
+alias dockerrm='docker-compose rm --all';
+
+## other aliases
+alias zshrc='vim ~/.zshrc';
+alias topten="history | commands | sort -rn | head";
+alias myip="curl http://ipecho.net/plain; echo";
+alias dirs="dirs -v | head -10";
+alias usage='du -h -d1';
+alias update="source ~/.zshrc";
+alias sshdir="cd ~/.ssh";
+alias runp="lsof -i ";
+alias md="mkdir ";
+alias ..='cd ..';
+alias ...='cd ../..';
+alias btop='bpytop';
+alias n='nordvpn';
+alias ncl='nordvpn connect Luxembourg';
+alias ncb='nordvpn connect Belgium';
+alias nd='nordvpn disconnect';
+alias ns='nordvpn status';
+alias sc='shellcheck --color=always';
+alias python='python3';
+alias zabbixon='sudo systemctl start zabbix-server zabbix-agent apache2 mysql.service';
+alias zabbixoff='sudo systemctl stop zabbix-server zabbix-agent apache2 mysql.service';
+alias zabbixstatus='sudo systemctl status zabbix-server zabbix-agent apache2 mysql.service';
+## custom functions
+#cd() { builtin cd "$@"; ls -lh; }
+
+glf() { glog --all --grep="$1"; }
+
+
+commands() {
+  awk '{a[$2]++}END{for(i in a){print a[i] " " i}}';
+}
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Adding Anaconda to PATH
+export PATH=/home/farokh/anaconda3/bin:$PATH
+#flutter
+export PATH="$PATH:/home/farokh/SDKsss/flutter/bin"
+#Local bin
+export PATH="$PATH:/home/farokh/.local/bin:/snap/bin/"
+KUBECONFIG=$HOME/.kube/config
+export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+#__conda_setup="$('/home/farokh/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/home/farokh/anaconda3/etc/profile.d/conda.sh" ]; then
+#        . "/home/farokh/anaconda3/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/home/farokh/anaconda3/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
+# <<< conda initialize <<<
+
+#export DOCKER_HOST=tcp://$HOST:2376 DOCKER_TLS_VERIFY=1
+
+#Java
+export JAVA_HOME=/usr/lib/jvm/default-java
+#Go
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+#Understand
+export PATH=$PATH:/home/farokh/Apps/scitools/bin/linux64
+export STIHOME=/home/farokh/Apps/scitools
+#Tranlator
+export GOOGLE_APPLICATION_CREDENTIALS=/home/farokh/Apps/vscode-googletranslator-api-7e355373cd9d.json
+#Gitlab
+export GITLAB_HOME=$HOME/codesss/gitlab
+#AndroidSDK
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+#CUDA library
+export CUDA_LIB_DIR=/usr/lib/cuda/lib64
+[ -f "/home/farokh/.ghcup/env" ] && source "/home/farokh/.ghcup/env" # ghcup-env
+#Splunk
+export SPLUNK_HOME="$HOME/Apps/splunk"
+export PATH=$PATH:/home/farokh/Apps/splunk/bin
+#Chezmoi
+export PATH=$PATH:/home/farokh/bin
